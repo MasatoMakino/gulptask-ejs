@@ -1,0 +1,19 @@
+{
+  "name": "gulptask-ejs",
+  "version": "0.1.0",
+  "description": "ejs compiler task for gulp.js",
+  "main": "./index.js",
+  "repository": "https://MasatoMakino@github.com/MasatoMakino/gulptask-ejs.git",
+  "author": "MasatoMakino <unagiinu.g@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-ejs": "^4.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.0"
+  }
+}
