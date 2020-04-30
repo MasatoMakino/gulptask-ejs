@@ -1,9 +1,10 @@
+"use strict";
+
 const { src, dest } = require("gulp");
 const plumber = require("gulp-plumber");
 const ejs = require("gulp-ejs");
 const htmlmin = require("gulp-htmlmin");
 const rename = require("gulp-rename");
-
 const path = require("path");
 
 /**
