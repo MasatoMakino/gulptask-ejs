@@ -2,11 +2,13 @@
   "name": "gulptask-ejs",
   "version": "0.1.1",
   "description": "ejs compiler task for gulp.js",
-  "main": "./index.js",
+  "main": "./bin/index.js",
+  "types": "./bin/index.d.ts",
   "repository": "https://MasatoMakino@github.com/MasatoMakino/gulptask-ejs.git",
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "glob": "^7.1.6",
     "gulp": "^4.0.2",
     "gulp-ejs": "^5.1.0",
     "gulp-htmlmin": "^5.0.1",
@@ -14,6 +16,20 @@
     "gulp-rename": "^2.0.0"
   },
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "@types/node": "^14.0.23",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.9.6"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "dev": "npx tsc -w",
+    "run": "gulp ejs"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
