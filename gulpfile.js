@@ -1,5 +1,5 @@
 "use strict";
-const ejs = require("./src")(
+const ejs = require("./bin").get(
   ["./testEjs/**/*.ejs", "!./testEjs/**/_*.ejs"],
   "./dist"
 );

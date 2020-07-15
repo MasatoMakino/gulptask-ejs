@@ -8,7 +8,7 @@
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "glob": "^7.1.6",
+    "globby": "^11.0.1",
     "gulp": "^4.0.2",
     "gulp-ejs": "^5.1.0",
     "gulp-htmlmin": "^5.0.1",
