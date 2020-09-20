@@ -9,12 +9,23 @@ const path = require("path");
 const globby = require("globby");
 
 /**
+ * @deprecated Use generateTask
+ * @param srcGlob
+ * @param distDir
+ */
+export function get(srcGlob: string | string[], distDir: string): Function {
+  return generateTask(srcGlob, distDir);
+}
+/**
  * ejs変換タスクを取得する。
  * @param srcGlob - 変換対象を表すglob ex) ['./src/ejs/ ** /*.ejs', './src/ejs/ ** /!_*.ejs']
  * @param distDir 出力先ディレクトリ ex) "./dist/"
  * @return gulpタスク
  */
-export function get(srcGlob: string | string[], distDir: string): Function {
+export function generateTask(
+  srcGlob: string | string[],
+  distDir: string
+): Function {
   distDir = path.resolve(process.cwd(), distDir);
 
   return () => {

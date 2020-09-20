@@ -1,5 +1,5 @@
 "use strict";
-const ejs = require("./bin").get(
+const ejs = require("./bin").generateTask(
   ["./testEjs/**/*.ejs", "!./testEjs/**/_*.ejs"],
   "./dist"
 );
