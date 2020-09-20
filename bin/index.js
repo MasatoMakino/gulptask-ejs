@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.get = void 0;
+exports.generateTask = exports.get = void 0;
 const { src, dest } = require("gulp");
 const plumber = require("gulp-plumber");
 const ejs = require("gulp-ejs");
@@ -9,12 +9,21 @@ const rename = require("gulp-rename");
 const path = require("path");
 const globby = require("globby");
 /**
+ * @deprecated Use generateTask
+ * @param srcGlob
+ * @param distDir
+ */
+function get(srcGlob, distDir) {
+  return generateTask(srcGlob, distDir);
+}
+exports.get = get;
+/**
  * ejs変換タスクを取得する。
  * @param srcGlob - 変換対象を表すglob ex) ['./src/ejs/ ** /*.ejs', './src/ejs/ ** /!_*.ejs']
  * @param distDir 出力先ディレクトリ ex) "./dist/"
  * @return gulpタスク
  */
-function get(srcGlob, distDir) {
+function generateTask(srcGlob, distDir) {
   distDir = path.resolve(process.cwd(), distDir);
   return () => {
     existsTarget(srcGlob);
@@ -32,7 +41,7 @@ function get(srcGlob, distDir) {
       .pipe(dest(distDir));
   };
 }
-exports.get = get;
+exports.generateTask = generateTask;
 const existsTarget = (entryPoints) => {
   const targets = globby.sync(entryPoints);
   if (targets == null || targets.length === 0) {
