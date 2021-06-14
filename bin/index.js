@@ -14,7 +14,7 @@ const globby = require("globby");
  * @param distDir
  */
 function get(srcGlob, distDir) {
-  return generateTask(srcGlob, distDir);
+    return generateTask(srcGlob, distDir);
 }
 exports.get = get;
 /**
@@ -24,32 +24,27 @@ exports.get = get;
  * @return gulpタスク
  */
 function generateTask(srcGlob, distDir) {
-  distDir = path.resolve(process.cwd(), distDir);
-  return () => {
-    existsTarget(srcGlob);
-    //srcにlastRunは使用しない。includeしたejsが更新された時にwatch対象から漏れるため。
-    return src(srcGlob)
-      .pipe(plumber())
-      .pipe(ejs())
-      .pipe(rename({ extname: ".html" }))
-      .pipe(
-        htmlmin({
-          collapseWhitespace: true,
-          removeComments: true,
-        })
-      )
-      .pipe(dest(distDir));
-  };
+    distDir = path.resolve(process.cwd(), distDir);
+    return () => {
+        existsTarget(srcGlob);
+        //srcにlastRunは使用しない。includeしたejsが更新された時にwatch対象から漏れるため。
+        return src(srcGlob)
+            .pipe(plumber())
+            .pipe(ejs())
+            .pipe(rename({ extname: ".html" }))
+            .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true,
+        }))
+            .pipe(dest(distDir));
+    };
 }
 exports.generateTask = generateTask;
 const existsTarget = (entryPoints) => {
-  const targets = globby.sync(entryPoints);
-  if (targets == null || targets.length === 0) {
-    console.error(
-      "\x1b[31m%s\x1b[0m",
-      `gulptask-ejs : Error no target files.
+    const targets = globby.sync(entryPoints);
+    if (targets == null || targets.length === 0) {
+        console.error("\x1b[31m%s\x1b[0m", `gulptask-ejs : Error no target files.
     The file specified by ${entryPoints} does not exist. The EJS task exits without outputting anything.
-    ${entryPoints}で指定されたファイルが存在しません。EJSタスクは何も出力せずに終了します。`
-    );
-  }
+    ${entryPoints}で指定されたファイルが存在しません。EJSタスクは何も出力せずに終了します。`);
+    }
 };
