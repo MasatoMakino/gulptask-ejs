@@ -4,6 +4,7 @@
 /__test__
 /docs
 /demoSrc
+/testEjs
 .codeclimate.yml
 .prettierignore
 .travis.yml
