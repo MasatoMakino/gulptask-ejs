@@ -7,6 +7,9 @@
   "repository": "https://MasatoMakino@github.com/MasatoMakino/gulptask-ejs.git",
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
+  "files": [
+    "bin"
+  ],
   "dependencies": {
     "globby": "^11.0.3",
     "gulp": "^4.0.2",
