@@ -56,9 +56,8 @@ export function generateTasks(
 const build = async (srcFile: string, srcDir: string, distDir: string) => {
   const result = await ejs.renderFile(path.resolve(srcDir, srcFile));
   const distPath = path.parse(path.resolve(distDir, srcFile));
-  distPath.ext = "html";
   await mkdir(distPath.dir, { recursive: true });
-  await writeFile(path.format(distPath), result);
+  await writeFile(path.resolve(distPath.dir, distPath.name + ".html"), result);
 };
 
 const existsTarget = async (
