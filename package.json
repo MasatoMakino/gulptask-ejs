@@ -10,8 +10,12 @@
   "files": [
     "bin"
   ],
+  "bin": {
+    "gulptask-ejs": "./bin/CLI.js"
+  },
   "dependencies": {
     "chokidar": "^3.5.2",
+    "commander": "^8.3.0",
     "ejs": "^3.1.6",
     "glob": "^7.2.0"
   },
@@ -27,7 +31,9 @@
   "scripts": {
     "build": "npx tsc",
     "dev": "npx tsc -w",
-    "run": "node gulpfile.js"
+    "run": "node gulpfile.js",
+    "buildEJS": "npx gulptask-ejs --srcDir ./testEjs --distDir ./dist --componentPatterns '**/_*.ejs'",
+    "watchEJS": "npm run buildEJS -- -W"
   },
   "husky": {
     "hooks": {
