@@ -10,25 +10,30 @@
   "files": [
     "bin"
   ],
+  "bin": {
+    "gulptask-ejs": "./bin/CLI.js"
+  },
   "dependencies": {
-    "globby": "^11.0.4",
-    "gulp": "^4.0.2",
-    "gulp-ejs": "^5.1.0",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^2.0.0"
+    "chokidar": "^3.5.2",
+    "commander": "^8.3.0",
+    "ejs": "^3.1.6",
+    "glob": "^7.2.0"
   },
   "devDependencies": {
-    "@types/node": "^16.4.13",
-    "husky": "^7.0.1",
-    "prettier": "^2.3.2",
+    "@types/ejs": "^3.1.0",
+    "@types/glob": "^7.2.0",
+    "@types/node": "^16.11.7",
+    "husky": "^7.0.4",
+    "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.4"
   },
   "scripts": {
     "build": "npx tsc",
     "dev": "npx tsc -w",
-    "run": "gulp ejs"
+    "run": "node gulpfile.js",
+    "buildEJS": "npx gulptask-ejs --srcDir ./testEjs --distDir ./dist --componentPatterns '**/_*.ejs'",
+    "watchEJS": "npm run buildEJS -- -W"
   },
   "husky": {
     "hooks": {

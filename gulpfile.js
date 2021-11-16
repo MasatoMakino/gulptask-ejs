@@ -1,6 +1,6 @@
 "use strict";
-const ejs = require("./bin").generateTask(
-  ["./testEjs/**/*.ejs", "!./testEjs/**/_*.ejs"],
-  "./dist"
-);
-exports.ejs = ejs;
+const ejs = require("./bin").generateTasks("./testEjs", "./dist", [
+  "**/_*.ejs",
+]);
+exports.ejs = ejs.buildEJS;
+exports.watchEJS = ejs.watchEJS;
