@@ -1,6 +1,6 @@
 {
   "name": "@masatomakino/gulptask-ejs",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "ejs compiler task for gulp.js",
   "main": "./bin/index.js",
   "types": "./bin/index.d.ts",
