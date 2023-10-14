@@ -16,4 +16,16 @@ describe("index", () => {
     expect(fs.existsSync("./dist/sub/sub.html")).toBeTruthy();
     expect(fs.existsSync("./dist/_component.html")).toBeFalsy();
   });
+
+  it("should stop with wrong glob", async () => {
+    const mockError = vi
+      .spyOn(console, "error")
+      .mockImplementation(vi.fn(() => {}));
+
+    const tasks = generateTasks("./notExistDir", "./dist", "**/_*.ejs");
+    await tasks.buildEJS();
+
+    expect(mockError).toHaveBeenCalled();
+    vi.resetAllMocks();
+  });
 });
