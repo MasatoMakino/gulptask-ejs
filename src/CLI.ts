@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
-import { generateTasks } from "./index";
+import { generateTasks } from "./index.js";
 
 const program = new Command();
 program

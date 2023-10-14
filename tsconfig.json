@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "commonjs",
+    "target": "ES2021",
+    "module": "node16",
     "declaration": true,
     "declarationMap": true,
     "outDir": "./bin",
-    "rootDir": "./src",
 
-    /* allow comment */
-    "moduleResolution": "node", //commentable
+    "moduleResolution": "node16",
     "esModuleInterop": true
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "__test__", "bin"]
 }

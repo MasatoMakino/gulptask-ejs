@@ -1,9 +1,9 @@
 "use strict";
 
-const ejs = require("ejs");
-const path = require("path");
-const glob = require("glob");
-const chokidar = require("chokidar");
+import ejs from "ejs";
+import path from "path";
+import { glob } from "glob";
+import chokidar from "chokidar";
 import { mkdir, writeFile } from "fs/promises";
 
 /**
