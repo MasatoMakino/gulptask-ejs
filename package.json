@@ -46,6 +46,8 @@
     "testRun": "node bin/CLI.js --srcDir ./testEjs --distDir ./dist --componentPatterns '**/_*.ejs'",
     "buildEJS": "npx @masatomakino/gulptask-ejs --srcDir ./testEjs --distDir ./dist --componentPatterns '**/_*.ejs'",
     "watchEJS": "npm run buildEJS -- -W",
+    "preversion": "git checkout main && git pull && npm ci && npx vitest --run",
+    "postversion": "git add package.json package-lock.json && git checkout -b version/$(git describe --tags --abbrev=0)",
     "prepare": "husky install"
   },
   "bugs": {
