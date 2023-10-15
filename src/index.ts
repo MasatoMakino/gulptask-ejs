@@ -16,7 +16,7 @@ import { mkdir, writeFile } from "fs/promises";
 export function generateTasks(
   srcDir: string,
   distDir: string,
-  componentPatterns?: string | string[]
+  componentPatterns?: string | string[],
 ): {
   buildEJS: Function;
   watchEJS: Function;
@@ -33,11 +33,11 @@ export function generateTasks(
   const watchEJS = () => {
     chokidar
       .watch(path.resolve(srcDir, "**/*.ejs"))
-      .on("all", (type: string, filePath: string) => {
+      .on("all", async (type: string, filePath: string) => {
         console.log(
-          `gulptask-ejs : [${type}] ${path.relative(srcDir, filePath)}`
+          `gulptask-ejs : [${type}] ${path.relative(srcDir, filePath)}`,
         );
-        buildEJS();
+        await buildEJS();
       });
   };
 
@@ -62,9 +62,9 @@ const build = async (srcFile: string, srcDir: string, distDir: string) => {
 
 const existsTarget = async (
   dir: string,
-  ignorePattern: string | string[]
+  ignorePattern: string | string[],
 ): Promise<string[]> => {
-  const targets = await glob.sync("**/*.ejs", {
+  const targets = glob.sync("**/*.ejs", {
     cwd: dir,
     ignore: ignorePattern,
   });
@@ -74,7 +74,7 @@ const existsTarget = async (
       "\x1b[31m%s\x1b[0m",
       `gulptask-ejs : Error no target files.
     The file specified by ${dir} does not exist. The EJS task exits without outputting anything.
-    ${dir}で指定されたファイルが存在しません。EJSタスクは何も出力せずに終了します。`
+    ${dir}で指定されたファイルが存在しません。EJSタスクは何も出力せずに終了します。`,
     );
   }
 
