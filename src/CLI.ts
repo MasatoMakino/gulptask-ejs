@@ -10,7 +10,7 @@ program
   .option("--distDir <path>", "Output directory. ex. './dist'")
   .option(
     "--componentPatterns <string | string[]>",
-    "[optional] Glob pattern for ejs components."
+    "[optional] Glob pattern for ejs components.",
   )
   .parse(process.argv);
 
