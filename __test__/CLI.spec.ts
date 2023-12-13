@@ -1,4 +1,3 @@
-// CLI.test.ts
 import { describe, expect, it } from "vitest";
 import { mockGenerateTasks } from "./CLIMock.ts";
 
