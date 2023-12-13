@@ -3,7 +3,7 @@
 import ejs from "ejs";
 import path from "path";
 import { glob } from "glob";
-import chokidar from "chokidar";
+import chokidar, { FSWatcher } from "chokidar";
 import { mkdir, writeFile } from "fs/promises";
 
 /**
@@ -18,8 +18,8 @@ export function generateTasks(
   distDir: string,
   componentPatterns?: string | string[],
 ): {
-  buildEJS: Function;
-  watchEJS: Function;
+  buildEJS: () => Promise<void>;
+  watchEJS: () => FSWatcher;
 } {
   distDir = path.resolve(process.cwd(), distDir);
 
@@ -30,8 +30,8 @@ export function generateTasks(
     }
   };
 
-  const watchEJS = () => {
-    chokidar
+  const watchEJS = (): FSWatcher => {
+    return chokidar
       .watch(path.resolve(srcDir, "**/*.ejs"))
       .on("all", async (type: string, filePath: string) => {
         console.log(
