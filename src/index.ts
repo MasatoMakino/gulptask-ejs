@@ -37,14 +37,16 @@ export function generateTasks(
         console.log(
           `gulptask-ejs : [${type}] ${path.relative(srcDir, filePath)}`,
         );
-        await buildEJS();
+        await tasks.buildEJS();
       });
   };
 
-  return {
+  const tasks = {
     buildEJS,
     watchEJS,
   };
+
+  return tasks;
 }
 
 /**
