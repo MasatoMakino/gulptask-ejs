@@ -32,8 +32,13 @@ export function generateTasks(
 
   const watchEJS = (): FSWatcher => {
     return chokidar
-      .watch(path.resolve(srcDir, "**/*.ejs"))
+      .watch(path.resolve(srcDir), {})
       .on("all", async (type: string, filePath: string) => {
+        const ext = path.extname(filePath);
+        if (ext !== ".ejs") {
+          return;
+        }
+
         console.log(
           `gulptask-ejs : [${type}] ${path.relative(srcDir, filePath)}`,
         );

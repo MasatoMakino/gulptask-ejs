@@ -23,7 +23,7 @@
     "gulptask-ejs": "bin/CLI.js"
   },
   "dependencies": {
-    "chokidar": "^3.6.0",
+    "chokidar": "^4.0.0",
     "commander": "^12.0.0",
     "ejs": "^3.1.9",
     "glob": "^11.0.0"
@@ -43,8 +43,7 @@
     "test": "vitest",
     "coverage": "vitest --run --coverage",
     "testRun": "node bin/CLI.js --srcDir ./testEjs --distDir ./dist --componentPatterns '**/_*.ejs'",
-    "buildEJS": "npx @masatomakino/gulptask-ejs --srcDir ./testEjs --distDir ./dist --componentPatterns '**/_*.ejs'",
-    "watchEJS": "npm run buildEJS -- -W",
+    "testWatch": "node bin/CLI.js --srcDir ./testEjs --distDir ./dist --componentPatterns '**/_*.ejs' --watch",
     "preversion": "git checkout main && git pull && npm ci && npx vitest --run",
     "postversion": "git add package.json package-lock.json && git checkout -b version/$(git describe --tags --abbrev=0)",
     "prepare": "husky"
