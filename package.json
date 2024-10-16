@@ -1,6 +1,6 @@
 {
   "name": "@masatomakino/gulptask-ejs",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "ejs compiler task for gulp.js",
   "type": "module",
   "exports": {
