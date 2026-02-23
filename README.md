@@ -1,8 +1,12 @@
 # gulptask-ejs
 
-> **Note:** This repository has been archived and is no longer maintained.
-> The npm package `@masatomakino/gulptask-ejs` has been deprecated.
-> Use EJS directly via its own API and CLI.
+> [!CAUTION]
+>
+> **This repository has been archived.**
+>
+> This package is deprecated. Use EJS directly via its own API and CLI.
+>
+> See [#310](https://github.com/MasatoMakino/gulptask-ejs/issues/310) for details.
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![npm version](https://badge.fury.io/js/@masatomakino%2Fgulptask-ejs.svg)](https://badge.fury.io/js/@masatomakino%2Fgulptask-ejs)
